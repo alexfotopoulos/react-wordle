@@ -1,0 +1,6 @@
+.Letter {
+    height: 100px;
+    width: 80px;
+    border: 1px solid grey;
+    margin: .2rem
+}
