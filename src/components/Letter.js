@@ -10,8 +10,8 @@ export default function Letter(props) {
 
   if (props.parentId === gameCtx.activeWord) {
     content = gameCtx.currentGuess[props.letterId];
-  } else {
-    content = "";
+  } else if (props.parentId < gameCtx.activeWord) {
+    content = gameCtx.submittedGuesses[props.parentId][props.letterId];
   };
 
   return (

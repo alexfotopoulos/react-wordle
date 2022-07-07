@@ -4,25 +4,37 @@ import Word from "./components/Word";
 import GameContext from "./store/game-context";
 
 function App() {
-  let guessCounter = 0;
 
   const gameCtx = useContext(GameContext);
 
   useEffect(() => {
-    document.addEventListener("keyup", (evt) => {
-      if (evt.keyCode >= 65 && evt.keyCode <= 90) {
-        if (guessCounter < 5) {
-          guessCounter++;
-          gameCtx.addLetter(evt.key.toUpperCase());
-        };
+    const guessListener = evt => {
+      if (evt.keyCode >= 65 && evt.keyCode <= 90 && gameCtx.letterCount < 5) {
+        gameCtx.letterCount++;
+        gameCtx.addLetter(evt.key.toUpperCase());
       };
       if (evt.keyCode === 8) {
-        guessCounter--;
-        gameCtx.deleteLetter();
+        if (gameCtx.letterCount > 0) {
+          gameCtx.letterCount--;
+          gameCtx.deleteLetter();
+        };
       };
-      //ENTER is keycode 13
-    });
-  }, []);
+      if (evt.keyCode === 13) {
+        if (gameCtx.letterCount !== 5) {
+          alert('All letters must be filled');
+          return;
+        };
+        gameCtx.submitGuess();
+      };
+    };
+
+    document.addEventListener('keyup', guessListener);
+
+    return () => {
+      document.removeEventListener('keyup', guessListener);
+    };
+
+  }, [gameCtx]);
 
   return (
     <div className="App">
