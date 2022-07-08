@@ -1,6 +1,16 @@
 .Letter {
     height: 100px;
     width: 80px;
-    border: 1px solid grey;
+    border: 1px solid #787c7e;
     margin: .2rem
+}
+
+.wrongLetter {
+    background-color: #787c7e;
+}
+.rightLetter {
+    background-color: #c9b458;
+}
+.rightSpot {
+    background-color: #6aaa64;
 }

@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 
 const GameContext = createContext({
-    answer: "",
+    answer: [],
     submittedGuesses: [],
     currentGuess: [],
     activeWord: 0,
@@ -14,7 +14,7 @@ const GameContext = createContext({
 export function GameContextProvider(props) {
 
     //state to store the answer
-    const [answer, setAnswer] = useState([]);
+    const [answer, setAnswer] = useState(["S", "P", "A", "C", "E"]);
     //state to store the current guess
     const [currentGuess, setCurrentGuess] = useState([]);
     //state to store the submitted guesses

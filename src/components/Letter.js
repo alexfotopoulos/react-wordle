@@ -14,8 +14,23 @@ export default function Letter(props) {
     content = gameCtx.submittedGuesses[props.parentId][props.letterId];
   };
 
+  let letterClasses;
+
+  if (props.parentId < gameCtx.activeWord) {
+    if (gameCtx.submittedGuesses[props.parentId][props.letterId] === gameCtx.answer[props.letterId]) {
+      letterClasses = "Letter rightSpot";
+    } else if (gameCtx.answer.includes(gameCtx.submittedGuesses[props.parentId][props.letterId])) {
+      letterClasses = "Letter rightLetter";
+    }
+    else {
+      letterClasses = "Letter wrongLetter";
+    }
+  } else {
+    letterClasses = "Letter";
+  };
+
   return (
-    <div className="Letter">
+    <div className={letterClasses}>
       {content}
     </div>
   );
