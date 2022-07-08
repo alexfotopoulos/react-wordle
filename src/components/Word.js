@@ -5,6 +5,7 @@ import "./Word.css";
 
 export default function Word(props) {
 
+  //consume GameContext
   const gameCtx = useContext(GameContext);
 
   return (
