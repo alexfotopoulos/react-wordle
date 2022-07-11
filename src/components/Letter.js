@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import GameContext from "../store/game-context";
 import "./Letter.css";
+import { testEvalLetter } from "../helper";
 
 export default function Letter(props) {
 
@@ -23,18 +24,7 @@ export default function Letter(props) {
 
   //if parent Word component corresponds to previous guess in submittedGuesses
   if (props.parentId < gameCtx.activeWord) {
-    //if the letter is in the word and in the right spot
-    if (gameCtx.submittedGuesses[props.parentId][props.letterId] === gameCtx.answer[props.letterId]) {
-      letterClasses = "Letter rightSpot";
-      //if the letter is in the word but not in the right spot
-    } else if (gameCtx.answer.includes(gameCtx.submittedGuesses[props.parentId][props.letterId])) {
-      letterClasses = "Letter rightLetter";
-    }
-    //if the letter is not in the word
-    else {
-      letterClasses = "Letter wrongLetter";
-    }
-    //empty box for future letter
+    letterClasses = testEvalLetter(gameCtx.answer, gameCtx.submittedGuesses[props.parentId][props.letterId], props.letterId, props.answerObject);
   } else {
     letterClasses = "Letter";
   };

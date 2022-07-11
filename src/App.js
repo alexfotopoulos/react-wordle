@@ -42,7 +42,6 @@ function App() {
     return () => {
       document.removeEventListener('keyup', guessListener);
     };
-
   }, [gameCtx]);
 
   //function to reset game
