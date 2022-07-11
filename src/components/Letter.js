@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import GameContext from "../store/game-context";
 import "./Letter.css";
-import { testEvalLetter } from "../helper";
+import { testEvalLetter } from "../helpers";
 
 export default function Letter(props) {
 

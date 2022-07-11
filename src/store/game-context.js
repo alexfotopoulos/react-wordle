@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { randomWordSelect } from "../helpers";
 
 const GameContext = createContext({
     answer: [],
@@ -15,8 +16,8 @@ const GameContext = createContext({
 
 export function GameContextProvider(props) {
 
-    //state to store the answer (currently using placeholder)
-    const [answer, setAnswer] = useState(["S", "P", "A", "C", "E"]);
+    //state to store the randomly selected answer
+    const [answer, setAnswer] = useState(randomWordSelect());
     //state to store the current guess
     const [currentGuess, setCurrentGuess] = useState([]);
     //state to store the submitted guesses
@@ -73,13 +74,14 @@ export function GameContextProvider(props) {
         };
     };
 
-    //function to reset the game with empty values
+    //function to reset the game with empty values/new answer
     function handleReset() {
         setSubmittedGuesses([]);
         setActiveWord(0);
         setCurrentGuess([]);
         setLetterCount(0);
         setGameover(false);
+        setAnswer(randomWordSelect())
     };
 
     //context to be provided to children
