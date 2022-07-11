@@ -5,12 +5,12 @@
     margin: .2rem
 }
 
-.wrongLetter {
+.letter-wrongLetter {
     background-color: #787c7e;
 }
-.rightLetter {
+.letter-rightLetter {
     background-color: #c9b458;
 }
-.rightSpot {
+.letter-rightSpot {
     background-color: #6aaa64;
 }

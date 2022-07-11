@@ -8,6 +8,7 @@ const GameContext = createContext({
     activeWord: 0,
     letterCount: 0,
     gameover: null,
+    guessedLetters: {},
     addLetter: () => { },
     deleteLetter: () => { },
     submitGuess: () => { },
@@ -28,6 +29,8 @@ export function GameContextProvider(props) {
     const [letterCount, setLetterCount] = useState(0);
     //state to track if game is over
     const [gameover, setGameover] = useState(false);
+    //state to track the guessed letters
+    const [guessedLetters, setGuessedLetters] = useState({rightSpot: [], rightLetter: [], wrongLetter: []});
 
     //function to accept new letters in currentGuess
     function handleAddLetter(newLetter) {
@@ -59,6 +62,23 @@ export function GameContextProvider(props) {
         setActiveWord(prevActiveWord => {
             return prevActiveWord + 1;
         });
+
+        //add guessed letters to the guessedLetters array
+        setGuessedLetters(prevGuessedLetters => {
+            let newObject = prevGuessedLetters
+            for (let i = 0; i < 5; i++) {
+                if (answer[i] === currentGuess[i]) {
+                    newObject.rightSpot = [...prevGuessedLetters.rightSpot, currentGuess[i]]
+                } else if (answer.includes(currentGuess[i])) {
+                    newObject.rightLetter = [...prevGuessedLetters.rightLetter, currentGuess[i]]
+                } else {
+                    newObject.wrongLetter = [...prevGuessedLetters.wrongLetter, currentGuess[i]]
+                }
+            }
+            return newObject
+        })
+
+        //set currentGuess to a blank array and letter count to 0 for next guess
         setCurrentGuess([]);
         setLetterCount(0);
 
@@ -82,6 +102,7 @@ export function GameContextProvider(props) {
         setLetterCount(0);
         setGameover(false);
         setAnswer(randomWordSelect())
+        setGuessedLetters({rightSpot: [], rightLetter: [], wrongLetter: []})
     };
 
     //context to be provided to children
@@ -92,6 +113,7 @@ export function GameContextProvider(props) {
         activeWord,
         letterCount,
         gameover,
+        guessedLetters,
         addLetter: handleAddLetter,
         deleteLetter: handleDeleteLetter,
         submitGuess: handleSubmitGuess,

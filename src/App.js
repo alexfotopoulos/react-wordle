@@ -1,7 +1,9 @@
 import { useContext, useEffect } from "react";
 import "./App.css";
-import Word from "./components/Word";
+import Word from "./components/guesses/Word";
 import GameContext from "./store/game-context";
+import Keyboard from "./components/keyboard/Keyboard";
+import Key from "./components/keyboard/Key";
 
 function App() {
 
@@ -65,7 +67,16 @@ function App() {
             <Word wordId={5} />
           </div>
         </div>
-        {gameCtx.gameover === true && gameoverContent}
+        <div className="row">
+          <div className="col-4 offset-4 text-center">
+            {gameCtx.gameover === true && gameoverContent}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <Keyboard />
+          </div>
+        </div>
       </div>
     </div>
   );

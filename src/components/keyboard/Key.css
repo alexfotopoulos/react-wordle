@@ -1,0 +1,16 @@
+.Key {
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    margin: 3px;
+}
+
+.key-wrongLetter {
+    background-color: #787c7e;
+}
+.key-rightLetter {
+    background-color: #c9b458;
+}
+.key-rightSpot {
+    background-color: #6aaa64;
+}

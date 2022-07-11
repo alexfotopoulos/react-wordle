@@ -7,18 +7,18 @@ export function testEvalLetter(answer, letter, index, answerObject) {
             //decrement the letter from answerObject
             answerObject[letter]--;
             //return the appropriate class
-            return "Letter rightSpot";
+            return "Letter letter-rightSpot";
             //else if the letter is in the word but not in the right spot
         } else {
             //decrement the letter from answerObject
             answerObject[letter]--;
             //return the appropriate class
-            return "Letter rightLetter";
+            return "Letter letter-rightLetter";
         };
         //if the letter is not in the word
     } else {
         //return the appropriate class
-        return "Letter wrongLetter";
+        return "Letter letter-wrongLetter";
     };
 };
 
