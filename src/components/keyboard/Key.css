@@ -1,12 +1,27 @@
 .Key {
-    height: 30px;
-    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 58px;
+    border-radius: 4px;
+    width: 43px;
+    cursor: pointer;
     border: 1px solid black;
-    margin: 3px;
+    margin: 2px;
+    background-color: #818384;
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 560px) {
+    .Key {
+        height: 55px;
+        width: 35px;
+    }
 }
 
 .key-wrongLetter {
-    background-color: #787c7e;
+    background-color: #282828;
 }
 .key-rightLetter {
     background-color: #c9b458;

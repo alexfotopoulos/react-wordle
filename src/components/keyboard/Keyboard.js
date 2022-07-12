@@ -4,7 +4,7 @@ import Key from "./Key";
 
 export default function Keyboard() {
     return (
-        <div className="container">
+        <div className="container p-0">
             <div className="row">
                 <Key letter={"Q"} />
                 <Key letter={"W"} />
@@ -37,7 +37,7 @@ export default function Keyboard() {
                 <Key letter={"B"} />
                 <Key letter={"N"} />
                 <Key letter={"M"} />
-                <Key letter={"BS"} />
+                <Key letter={"BS"}/>
             </div>
         </div>
     );

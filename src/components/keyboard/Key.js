@@ -33,8 +33,6 @@ export default function Key(props) {
         keyTheme = "Key"
     }
 
-    console.log(gameCtx.guessedLetters.rightSpot.includes("A"))
-
     return (
         <div className={keyTheme} onClick={handleClick}>{props.letter}</div>
     );

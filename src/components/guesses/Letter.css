@@ -1,16 +1,25 @@
 .Letter {
-    height: 100px;
-    width: 80px;
-    border: 1px solid #787c7e;
-    margin: .2rem
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    min-height: 62px;
+    min-width: 62px;
+    border: 1px solid #3a3a3c;
+    margin: .2rem;
+    box-sizing: border-box;
 }
 
 .letter-wrongLetter {
-    background-color: #787c7e;
+    background-color: #3a3a3c;
 }
 .letter-rightLetter {
     background-color: #c9b458;
+    border: none;
 }
 .letter-rightSpot {
     background-color: #6aaa64;
+    border: none;
 }

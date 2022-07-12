@@ -58,13 +58,20 @@ function App() {
     <div className="App">
       <div className="container">
         <div className="row">
-          <div className="col-6 offset-3 mt-5">
-            <Word wordId={0} />
-            <Word wordId={1} />
-            <Word wordId={2} />
-            <Word wordId={3} />
-            <Word wordId={4} />
-            <Word wordId={5} />
+          <div className="col">
+            <h1 className="mt-2 text-white fw-bold">Wordle</h1>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <div className="App-gameboard mb-sm-5">
+              <Word wordId={0} />
+              <Word wordId={1} />
+              <Word wordId={2} />
+              <Word wordId={3} />
+              <Word wordId={4} />
+              <Word wordId={5} />
+            </div>
           </div>
         </div>
         <div className="row">
