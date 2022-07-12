@@ -1,10 +1,25 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import GameContext from "../../store/game-context";
 import "./Key.css";
 
 export default function Key(props) {
 
     const gameCtx = useContext(GameContext);
+
+    function handleClick() {
+        if (gameCtx.gameover === false && (props.letter !== "EN" && props.letter !== "BS") && gameCtx.letterCount < 5) {
+            gameCtx.addLetter(props.letter);
+        } else if (gameCtx.gameover === false && props.letter === "BS" && gameCtx.letterCount > 0) {
+            gameCtx.deleteLetter();
+        } else if (gameCtx.gameover === false && props.letter === "EN") {
+            if (gameCtx.letterCount !== 5) {
+                alert('All letters must be filled');
+                return;
+            } else {
+                gameCtx.submitGuess();
+            };
+        };
+    };
 
     let keyTheme
 
@@ -21,6 +36,6 @@ export default function Key(props) {
     console.log(gameCtx.guessedLetters.rightSpot.includes("A"))
 
     return (
-        <div className={keyTheme}>{props.letter}</div>
+        <div className={keyTheme} onClick={handleClick}>{props.letter}</div>
     );
 };
