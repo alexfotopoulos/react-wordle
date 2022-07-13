@@ -1,5 +1,6 @@
 import React from "react";
 import Key from "./Key";
+import SpecialKey from "./SpecialKey";
 
 
 export default function Keyboard() {
@@ -29,7 +30,7 @@ export default function Keyboard() {
                 <Key letter={"L"} />
             </div>
             <div className="row">
-                <Key letter={"EN"} />
+                <SpecialKey letter={"ENTER"} />
                 <Key letter={"Z"} />
                 <Key letter={"X"} />
                 <Key letter={"C"} />
@@ -37,7 +38,7 @@ export default function Keyboard() {
                 <Key letter={"B"} />
                 <Key letter={"N"} />
                 <Key letter={"M"} />
-                <Key letter={"BS"} />
+                <SpecialKey letter={"BS"} />
             </div>
         </div>
     );

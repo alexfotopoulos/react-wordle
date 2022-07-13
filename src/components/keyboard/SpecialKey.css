@@ -1,0 +1,24 @@
+.SpecialKey {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 58px;
+    border-radius: 4px;
+    width: 66px;
+    cursor: pointer;
+    border: 1px solid black;
+    margin: 2px;
+    background-color: #818384;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+@media (max-width: 560px) {
+    .SpecialKey {
+        height: 55px;
+        width: 54px;
+        font-size: small;
+    }
+}
