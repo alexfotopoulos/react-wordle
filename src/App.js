@@ -15,19 +15,19 @@ function App() {
     //function to listen for key strokes
     const guessListener = evt => {
       //if key stroke is in alphabet, add letter to current guess
-      if (gameCtx.gameover === false && evt.keyCode >= 65 && evt.keyCode <= 90 && gameCtx.letterCount < 5) {
+      if (gameCtx.gameover === false && gameCtx.isPaused === false && evt.keyCode >= 65 && evt.keyCode <= 90 && gameCtx.letterCount < 5) {
         gameCtx.letterCount++;
         gameCtx.addLetter(evt.key.toUpperCase());
       };
       //if key stroke is backspace, pop last character off current guess
-      if (gameCtx.gameover === false && evt.keyCode === 8) {
+      if (gameCtx.gameover === false && gameCtx.isPaused === false && evt.keyCode === 8) {
         if (gameCtx.letterCount > 0) {
           gameCtx.letterCount--;
           gameCtx.deleteLetter();
         };
       };
       //if key stroke is enter and the word is filled, submit
-      if (gameCtx.gameover === false && evt.keyCode === 13) {
+      if (gameCtx.gameover === false && gameCtx.isPaused === false && evt.keyCode === 13) {
         //if word is not filled
         if (gameCtx.letterCount !== 5) {
           alert('All letters must be filled');

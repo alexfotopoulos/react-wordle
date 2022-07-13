@@ -35,3 +35,5 @@ export default function Letter(props) {
     </div>
   );
 };
+
+// style={{transition: `background-color ${props.letterId}00 ms`}}

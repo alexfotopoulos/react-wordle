@@ -12,14 +12,69 @@
     box-sizing: border-box;
 }
 
+
 .letter-wrongLetter {
     background-color: #3a3a3c;
+    transition: all 300ms;
 }
 .letter-rightLetter {
     background-color: #c9b458;
-    border: none;
+    transition: all 300ms;
 }
 .letter-rightSpot {
     background-color: #6aaa64;
-    border: none;
+    transition: all 300ms;
+}
+
+
+.Letter:nth-of-type(1) + .letter-wrongLetter {
+    transition-delay: 400ms;
+    transition-property: background-color;
+}
+.Letter:nth-of-type(1) + .letter-rightLetter {
+    transition-delay: 400ms;
+    transition-property: background-color;
+}
+.Letter:nth-of-type(1) + .letter-rightSpot {
+    transition-delay: 400ms;
+    transition-property: background-color;
+}
+
+.Letter:nth-of-type(2) + .letter-wrongLetter {
+    transition-delay: 800ms;
+    transition-property: background-color;
+}
+.Letter:nth-of-type(2) + .letter-rightLetter {
+    transition-delay: 800ms;
+    transition-property: background-color;
+}
+.Letter:nth-of-type(2) + .letter-rightSpot {
+    transition-delay: 800ms;
+    transition-property: background-color;
+}
+
+.Letter:nth-of-type(3) + .letter-wrongLetter {
+    transition-delay: 1200ms;
+    transition-property: background-color;
+}
+.Letter:nth-of-type(3) + .letter-rightLetter {
+    transition-delay: 1200ms;
+    transition-property: background-color;
+}
+.Letter:nth-of-type(3) + .letter-rightSpot {
+    transition-delay: 1200ms;
+    transition-property: background-color;
+}
+
+.Letter:nth-of-type(4) + .letter-wrongLetter {
+    transition-delay: 1600ms;
+    transition-property: background-color;
+}
+.Letter:nth-of-type(4) + .letter-rightLetter {
+    transition-delay: 1600ms;
+    transition-property: background-color;
+}
+.Letter:nth-of-type(4) + .letter-rightSpot {
+    transition-delay: 1600ms;
+    transition-property: background-color;
 }
