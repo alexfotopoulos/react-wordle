@@ -37,7 +37,7 @@ export default function Keyboard() {
                 <Key letter={"B"} />
                 <Key letter={"N"} />
                 <Key letter={"M"} />
-                <Key letter={"BS"}/>
+                <Key letter={"BS"} />
             </div>
         </div>
     );

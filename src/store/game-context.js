@@ -9,6 +9,7 @@ const GameContext = createContext({
     letterCount: 0,
     gameover: null,
     guessedLetters: {},
+    isWinner: false,
     addLetter: () => { },
     deleteLetter: () => { },
     submitGuess: () => { },
@@ -30,7 +31,9 @@ export function GameContextProvider(props) {
     //state to track if game is over
     const [gameover, setGameover] = useState(false);
     //state to track the guessed letters
-    const [guessedLetters, setGuessedLetters] = useState({rightSpot: [], rightLetter: [], wrongLetter: []});
+    const [guessedLetters, setGuessedLetters] = useState({ rightSpot: [], rightLetter: [], wrongLetter: [] });
+    //state to track if the user won the game
+    const [isWinner, setIsWinner] = useState(false)
 
     //function to accept new letters in currentGuess
     function handleAddLetter(newLetter) {
@@ -68,15 +71,15 @@ export function GameContextProvider(props) {
             let newObject = prevGuessedLetters
             for (let i = 0; i < 5; i++) {
                 if (answer[i] === currentGuess[i]) {
-                    newObject.rightSpot = [...prevGuessedLetters.rightSpot, currentGuess[i]]
+                    newObject.rightSpot = [...prevGuessedLetters.rightSpot, currentGuess[i]];
                 } else if (answer.includes(currentGuess[i])) {
-                    newObject.rightLetter = [...prevGuessedLetters.rightLetter, currentGuess[i]]
+                    newObject.rightLetter = [...prevGuessedLetters.rightLetter, currentGuess[i]];
                 } else {
-                    newObject.wrongLetter = [...prevGuessedLetters.wrongLetter, currentGuess[i]]
-                }
-            }
-            return newObject
-        })
+                    newObject.wrongLetter = [...prevGuessedLetters.wrongLetter, currentGuess[i]];
+                };
+            };
+            return newObject;
+        });
 
         //set currentGuess to a blank array and letter count to 0 for next guess
         setCurrentGuess([]);
@@ -85,6 +88,7 @@ export function GameContextProvider(props) {
         //if submitted guess is the answer
         if (JSON.stringify(answer) === JSON.stringify(currentGuess)) {
             setGameover(true);
+            setIsWinner(true);
             return;
             //if submitted guess is the last chance
         } else if (activeWord + 1 === 6) {
@@ -101,8 +105,9 @@ export function GameContextProvider(props) {
         setCurrentGuess([]);
         setLetterCount(0);
         setGameover(false);
-        setAnswer(randomWordSelect())
-        setGuessedLetters({rightSpot: [], rightLetter: [], wrongLetter: []})
+        setAnswer(randomWordSelect());
+        setGuessedLetters({ rightSpot: [], rightLetter: [], wrongLetter: [] });
+        setIsWinner(false);
     };
 
     //context to be provided to children
@@ -114,6 +119,7 @@ export function GameContextProvider(props) {
         letterCount,
         gameover,
         guessedLetters,
+        isWinner,
         addLetter: handleAddLetter,
         deleteLetter: handleDeleteLetter,
         submitGuess: handleSubmitGuess,

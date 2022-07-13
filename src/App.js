@@ -3,7 +3,7 @@ import "./App.css";
 import Word from "./components/guesses/Word";
 import GameContext from "./store/game-context";
 import Keyboard from "./components/keyboard/Keyboard";
-import Key from "./components/keyboard/Key";
+import ResetModal from "./components/ResetModal";
 
 function App() {
 
@@ -46,14 +46,6 @@ function App() {
     };
   }, [gameCtx]);
 
-  //function to reset game
-  function reset() {
-    gameCtx.reset();
-  };
-
-  //reset button to be added when game is over
-  const gameoverContent = <><button onClick={reset}>Reset</button></>
-
   return (
     <div className="App">
       <div className="container">
@@ -76,7 +68,7 @@ function App() {
         </div>
         <div className="row">
           <div className="col-4 offset-4 text-center">
-            {gameCtx.gameover === true && gameoverContent}
+            {gameCtx.gameover === true && <ResetModal />}
           </div>
         </div>
         <div className="row">

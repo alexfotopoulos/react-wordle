@@ -21,17 +21,17 @@ export default function Key(props) {
         };
     };
 
-    let keyTheme
+    let keyTheme;
 
     if (gameCtx.guessedLetters.rightSpot.includes(props.letter)) {
-        keyTheme = "Key key-rightSpot"
+        keyTheme = "Key key-rightSpot";
     } else if (gameCtx.guessedLetters.rightLetter.includes(props.letter)) {
-        keyTheme = "Key key-rightLetter"
+        keyTheme = "Key key-rightLetter";
     } else if (gameCtx.guessedLetters.wrongLetter.includes(props.letter)) {
-        keyTheme = "Key key-wrongLetter"
+        keyTheme = "Key key-wrongLetter";
     } else {
-        keyTheme = "Key"
-    }
+        keyTheme = "Key";
+    };
 
     return (
         <div className={keyTheme} onClick={handleClick}>{props.letter}</div>
