@@ -9,16 +9,7 @@ export default function Key(props) {
     function handleClick() {
         if (gameCtx.gameover === false && gameCtx.isPaused === false && (props.letter !== "EN" && props.letter !== "BS") && gameCtx.letterCount < 5) {
             gameCtx.addLetter(props.letter);
-        } else if (gameCtx.gameover === false && gameCtx.isPaused === false && props.letter === "BS" && gameCtx.letterCount > 0) {
-            gameCtx.deleteLetter();
-        } else if (gameCtx.gameover === false && gameCtx.isPaused === false && props.letter === "EN") {
-            if (gameCtx.letterCount !== 5) {
-                alert('All letters must be filled');
-                return;
-            } else {
-                gameCtx.submitGuess();
-            };
-        };
+        }
     };
 
     let keyTheme;

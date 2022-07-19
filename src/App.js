@@ -1,9 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./App.css";
 import Word from "./components/guesses/Word";
 import GameContext from "./store/game-context";
 import Keyboard from "./components/keyboard/Keyboard";
-import ResetModal from "./components/ResetModal";
+import ResetModal from "./components/modals/ResetModal";
+import ErrorModal from "./components/modals/ErrorModal";
 
 function App() {
 
@@ -28,11 +29,6 @@ function App() {
       };
       //if key stroke is enter and the word is filled, submit
       if (gameCtx.gameover === false && gameCtx.isPaused === false && evt.keyCode === 13) {
-        //if word is not filled
-        if (gameCtx.letterCount !== 5) {
-          alert('All letters must be filled');
-          return;
-        };
         gameCtx.submitGuess();
       };
     };
@@ -69,6 +65,9 @@ function App() {
         <div className="row">
           <div className="col-4 offset-4 text-center">
             {gameCtx.gameover === true && <ResetModal />}
+          </div>
+          <div className="col-4 offset-4 text-center">
+            {gameCtx.isError === true && <ErrorModal />}
           </div>
         </div>
         <div className="row">

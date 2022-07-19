@@ -10,12 +10,7 @@ export default function SpecialKey(props) {
         if (gameCtx.gameover === false && gameCtx.isPaused === false && props.letter === "BS" && gameCtx.letterCount > 0) {
             gameCtx.deleteLetter();
         } else if (gameCtx.gameover === false && gameCtx.isPaused === false && props.letter === "ENTER") {
-            if (gameCtx.letterCount !== 5) {
-                alert('All letters must be filled');
-                return;
-            } else {
-                gameCtx.submitGuess();
-            };
+            gameCtx.submitGuess();
         };
     };
 

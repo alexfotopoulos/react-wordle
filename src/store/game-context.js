@@ -11,6 +11,7 @@ const GameContext = createContext({
     guessedLetters: {},
     isWinner: false,
     isPaused: false,
+    isError: false,
     addLetter: () => { },
     deleteLetter: () => { },
     submitGuess: () => { },
@@ -34,9 +35,11 @@ export function GameContextProvider(props) {
     //state to track the guessed letters
     const [guessedLetters, setGuessedLetters] = useState({ rightSpot: [], rightLetter: [], wrongLetter: [] });
     //state to track if the user won the game
-    const [isWinner, setIsWinner] = useState(false)
+    const [isWinner, setIsWinner] = useState(false);
     //state to pause entries while guess is evaluated
-    const [isPaused, setIsPaused] = useState(false)
+    const [isPaused, setIsPaused] = useState(false);
+    //state to determine if error modal should be visible
+    const [isError, setIsError] = useState(false);
 
     //function to accept new letters in currentGuess
     function handleAddLetter(newLetter) {
@@ -61,6 +64,12 @@ export function GameContextProvider(props) {
 
     //function to submit currentGuess
     function handleSubmitGuess() {
+        //check to see if all letters are filled
+        if (letterCount !== 5) {
+            setIsError(true);
+            return;
+        };
+
         //pause entries for guess evaluation
         setIsPaused(true);
 
@@ -93,19 +102,19 @@ export function GameContextProvider(props) {
 
         //if submitted guess is the answer
         if (JSON.stringify(answer) === JSON.stringify(currentGuess)) {
-            setTimeout(() => {setGameover(true)}, 1900);
+            setTimeout(() => { setGameover(true) }, 1900);
             setIsWinner(true);
-            setTimeout(() => {setIsPaused(false)}, 1900);
+            setTimeout(() => { setIsPaused(false) }, 1900);
             return;
             //if submitted guess is the last chance
         } else if (activeWord + 1 === 6) {
-            setTimeout(() => {setGameover(true)}, 1900);
-            setTimeout(() => {setIsPaused(false)}, 1900);
+            setTimeout(() => { setGameover(true) }, 1900);
+            setTimeout(() => { setIsPaused(false) }, 1900);
             return;
         };
 
         //if submitted guess is not the answer and the user has more guesses
-        setTimeout(() => {setIsPaused(false)}, 1900);
+        setTimeout(() => { setIsPaused(false) }, 1900);
     };
 
     //function to reset the game with empty values/new answer
@@ -120,6 +129,11 @@ export function GameContextProvider(props) {
         setIsWinner(false);
     };
 
+    //function to clear error
+    function handleClearErrorModal() {
+        setIsError(false);
+    };
+
     //context to be provided to children
     const context = {
         answer,
@@ -131,10 +145,12 @@ export function GameContextProvider(props) {
         guessedLetters,
         isWinner,
         isPaused,
+        isError,
         addLetter: handleAddLetter,
         deleteLetter: handleDeleteLetter,
         submitGuess: handleSubmitGuess,
-        reset: handleReset
+        reset: handleReset,
+        clearErrorModal: handleClearErrorModal
     };
 
     return <GameContext.Provider value={context}>{props.children}</GameContext.Provider>
