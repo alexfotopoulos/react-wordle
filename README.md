@@ -14,7 +14,7 @@ Open [http://localhost:8000](http://localhost:8000) with your browser to see the
 
 ## Description
 
-React-World is a clone of the New York Times online puzzle game Wordle. Users have six attempts to guess a randomly-selected five letter word. The app is built using React, React Context for app-wide state management, and Express for server functionality.
+React-Wordle is a clone of the New York Times online puzzle game Wordle. Users have six attempts to guess a randomly-selected five letter word. The app is built using React, React Context for app-wide state management, and Express for server functionality.
 
 ## Technologies used
 
