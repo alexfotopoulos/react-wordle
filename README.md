@@ -10,7 +10,7 @@ First, run the development server:
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:8000) with your browser to see the result.
+Open [http://localhost:8000](http://localhost:8000) with your browser to see the result.
 
 ## Description
 
