@@ -11,7 +11,7 @@ export default function ErrorModal() {
         <div>
             <div className="backdrop"></div>
             <div className="ErrorModal">
-                <h1 className="text-white mb-4">All letters must be filled</h1>
+                <h1 className="text-white mb-4">{gameCtx.errorMessage}</h1>
                 <button className="btn btn-secondary" onClick={gameCtx.clearErrorModal}>Okay</button>
             </div>
 

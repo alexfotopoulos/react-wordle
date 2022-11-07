@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { randomWordSelect } from "../helpers";
+import { randomWordSelect, validWords, isValidGuess } from "../helpers";
 
 const GameContext = createContext({
     answer: [],
@@ -12,6 +12,7 @@ const GameContext = createContext({
     isWinner: false,
     isPaused: false,
     isError: false,
+    errorMessage: "",
     addLetter: () => { },
     deleteLetter: () => { },
     submitGuess: () => { },
@@ -40,6 +41,8 @@ export function GameContextProvider(props) {
     const [isPaused, setIsPaused] = useState(false);
     //state to determine if error modal should be visible
     const [isError, setIsError] = useState(false);
+    //state to set the error message
+    const [errorMessage, setErrorMessage] = useState();
 
     //function to accept new letters in currentGuess
     function handleAddLetter(newLetter) {
@@ -64,9 +67,28 @@ export function GameContextProvider(props) {
 
     //function to submit currentGuess
     function handleSubmitGuess() {
-        //check to see if all letters are filled
+        //check to see if all letters are filled and set error if not
         if (letterCount !== 5) {
             setIsError(true);
+            setErrorMessage("All letters must be filled");
+            return;
+        };
+
+        //check if the guess is in the word list
+        //convert guess from array to string
+        let guess = currentGuess.join("");
+        //extract the first letter of the guess
+        let str1 = guess.slice(0, 1);
+        //set remainig letters to lowercase
+        let str2 = guess.slice(1, 5).toLowerCase();
+        //reassign guess to be with the correct capitalization
+        guess = str1 + str2;
+        //check the validity of the guess
+        let isValid = isValidGuess(validWords, guess);
+        //if the guess is not valid, set error and message and return
+        if (!isValid) {
+            setIsError(true);
+            setErrorMessage("Guess not in word list");
             return;
         };
 
@@ -132,6 +154,7 @@ export function GameContextProvider(props) {
     //function to clear error
     function handleClearErrorModal() {
         setIsError(false);
+        setErrorMessage("");
     };
 
     //context to be provided to children
@@ -146,6 +169,7 @@ export function GameContextProvider(props) {
         isWinner,
         isPaused,
         isError,
+        errorMessage,
         addLetter: handleAddLetter,
         deleteLetter: handleDeleteLetter,
         submitGuess: handleSubmitGuess,
