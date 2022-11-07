@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
-import { randomWordSelect, validWords, isValidGuess } from "../helpers";
+import { validWords } from "../wordList";
+import { randomWordSelect, isValidGuess } from "../helpers";
 
 const GameContext = createContext({
     answer: [],
