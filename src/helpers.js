@@ -26,37 +26,37 @@ export function testEvalLetter(answer, letter, index, answerObject) {
 
 //function to randomly select a word
 export function randomWordSelect() {
-    let rand = Math.floor(Math.random() * 345) + 1;
+    let rand = Math.floor(Math.random() * 2482) + 1;
     return [...validWords[rand].toUpperCase()];
 };
 
 //binary search helper to determine if guess is valid
-function binarySearch(arr, guess) {
-    let rightIndex = arr.length - 1;
-    let leftIndex = 0;
-    let middleIndex = Math.floor((rightIndex + leftIndex) / 2);
+// function binarySearch(arr, guess) {
+//     let rightIndex = arr.length - 1;
+//     let leftIndex = 0;
+//     let middleIndex = Math.floor((rightIndex + leftIndex) / 2);
 
-    while (leftIndex <= rightIndex) {
-        if (arr[middleIndex] === guess) {
-            return true;
-        };
-        if (arr[middleIndex] > guess) {
-            rightIndex = middleIndex - 1;
-            middleIndex = Math.floor((rightIndex + leftIndex) / 2);
-        } else {
-            leftIndex = middleIndex + 1;
-            middleIndex = Math.floor((rightIndex + leftIndex) / 2);
-        };
-    };
-    return false;
-};
+//     while (leftIndex <= rightIndex) {
+//         if (arr[middleIndex] === guess) {
+//             return true;
+//         };
+//         if (arr[middleIndex] > guess) {
+//             rightIndex = middleIndex - 1;
+//             middleIndex = Math.floor((rightIndex + leftIndex) / 2);
+//         } else {
+//             leftIndex = middleIndex + 1;
+//             middleIndex = Math.floor((rightIndex + leftIndex) / 2);
+//         };
+//     };
+//     return false;
+// };
 
 //function to determine if guess is valid
-export function isValidGuess(arr, guess) {
-    const isValid = binarySearch(arr, guess);
-    if (isValid) {
-        return true;
-    } else {
-        return false;
-    };
-};
+// export function isValidGuess(arr, guess) {
+//     const isValid = binarySearch(arr, guess);
+//     if (isValid) {
+//         return true;
+//     } else {
+//         return false;
+//     };
+// };

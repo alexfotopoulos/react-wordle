@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { validWords } from "../wordList";
-import { randomWordSelect, isValidGuess } from "../helpers";
+import { randomWordSelect } from "../helpers";
 
 const GameContext = createContext({
     answer: [],
@@ -85,13 +85,13 @@ export function GameContextProvider(props) {
         //reassign guess to be with the correct capitalization
         guess = str1 + str2;
         //check the validity of the guess
-        let isValid = isValidGuess(validWords, guess);
-        //if the guess is not valid, set error and message and return
-        if (!isValid) {
-            setIsError(true);
-            setErrorMessage("Guess not in word list");
-            return;
-        };
+        // let isValid = isValidGuess(validWords, guess);
+        // //if the guess is not valid, set error and message and return
+        // if (!isValid) {
+        //     setIsError(true);
+        //     setErrorMessage("Guess not in word list");
+        //     return;
+        // };
 
         //pause entries for guess evaluation
         setIsPaused(true);
