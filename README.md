@@ -2,15 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Getting Started
+## Live link
 
-First, run the development server:
-
-```bash
-npm start
-```
-
-Open [http://localhost:8000](http://localhost:8000) with your browser to see the result.
+The deployed demo of React-Wordle can be found <a href="https://foto-wordle.herokuapp.com" target="_blank" rel="noreferrer">here</a>.
 
 ## Description
 
